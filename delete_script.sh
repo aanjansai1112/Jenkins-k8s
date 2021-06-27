@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Select the options to deploy the services"
+echo "Select the options to delete the services"
 echo " "
 
 PS3="Select the operation: "
@@ -10,32 +10,32 @@ select opt in Namespace RBAC PVC Jenkins_service Ilb_jenkins_service Jenkins_dep
   case $opt in
     Namespace)
       echo "********Namespace******"
-      kubectl apply -f ./namepace.yml -n jenkins 
+      kubectl delete -f ./namepace.yml -n jenkins 
       echo " "
       ;;
     RBAC)
       echo "********RBAC******"
-      kubectl apply -f ./rbac.yml -n jenkins 
+      kubectl delete -f ./rbac.yml -n jenkins 
       echo " "
       ;;
     PVC)
       echo "********PVC******"
-      kubectl apply -f ./pv-volumes.yml -n jenkins 
+      kubectl delete -f ./pv-volumes.yml -n jenkins 
       echo " "
       ;;
     Jenkins_service)
       echo "********Jenkins_service******"
-      kubectl apply -f ./jenkins-svc.yml -n jenkins 
+      kubectl delete -f ./jenkins-svc.yml -n jenkins 
       echo " "
       ;;
     Ilb_Jenkins_service)
       echo "********Ilb_jenkins_service******"
-      kubectl apply -f ./ilb_jenkins-svc.yml -n jenkins 
+      kubectl delete -f ./ilb_jenkins-svc.yml -n jenkins 
       echo " "
       ;;
     Jenkins_deployment)
       echo "********Jenkins_deployment******"
-      kubectl apply -f ./jenkins-deploy.yml -n jenkins 
+      kubectl delete -f ./jenkins-deploy.yml -n jenkins 
       echo " "
       ;;
     Quit)
