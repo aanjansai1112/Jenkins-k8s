@@ -28,9 +28,9 @@ select opt in Namespace RBAC PVC Jenkins_service Ilb_jenkins_service Jenkins_dep
       kubectl apply -f ./jenkins-svc.yml -n jenkins 
       echo " "
       ;;
-    Ilb_Jenkins_service)
+    Ilb_jenkins_service)
       echo "********Ilb_jenkins_service******"
-      kubectl apply -f ./ilb_jenkins-svc.yml -n jenkins 
+      kubectl apply -f ./ilb-jenkins-svc.yml -n jenkins 
       echo " "
       ;;
     Jenkins_deployment)
