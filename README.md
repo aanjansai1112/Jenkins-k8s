@@ -16,4 +16,12 @@ If your cluster and the VPC network are in the same project:
 gcloud compute addresses create IP_ADDR_NAME \
     --project PROJECT_ID \
     --subnet SUBNET \
-    --region REGION 
+    --region REGION
+
+sai@Quantiphi-2375:~$ gcloud compute addresses list --project demo-project                                                                                                  NAME             ADDRESS/RANGE  TYPE      PURPOSE       NETWORK  REGION       SUBNET                            STATUS                                                      jenkins-ilb-gke  10.10.*.*     INTERNAL  GCE_ENDPOINT           us-central1  test_subnet                        IN_USE
+
+Use the generated IP address in the ilb-jenkins-svc.yml
+
+loadBalancerIP: <IP_address>
+(Example : loadBalancerIP: 10.10.*.*)
+ 
