@@ -43,6 +43,24 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 5
             failureThreshold: 3
+        - image: webhookrelay/webhookrelayd:latest
+          name: webhookrelayd
+          env:
+            - name: KEY
+              valueFrom:
+                secretKeyRef:
+                  name: webhookrelay-credentials
+                  key: key
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: webhookrelay-credentials
+                  key: secret
+            - name: BUCKET
+              valueFrom:
+                secretKeyRef:
+                  name: webhookrelay-credentials
+                  key: bucket
           volumeMounts:
             - name: jenkins-data
               mountPath: /var/jenkins_home 

@@ -5,7 +5,7 @@ echo " "
 
 PS3="Select the operation: "
 
-select opt in Namespace RBAC PVC Jenkins_service Ilb_jenkins_service Jenkins_deployment Quit; do
+select opt in Namespace RBAC PVC Jenkins_service Ilb_jenkins_service Webhook_secret Jenkins_deployment Quit; do
 
   case $opt in
     Namespace)
@@ -31,6 +31,11 @@ select opt in Namespace RBAC PVC Jenkins_service Ilb_jenkins_service Jenkins_dep
     Ilb_jenkins_service)
       echo "********Ilb_jenkins_service******"
       kubectl delete -f ./ilb-jenkins-svc.yml -n jenkins 
+      echo " "
+      ;;
+    Webhook_secret)
+      echo "********Webhook_secret******"
+      kubectl delete -f ./webhookrelay-credentials.yml -n jenkins
       echo " "
       ;;
     Jenkins_deployment)
