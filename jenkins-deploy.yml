@@ -43,6 +43,11 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 5
             failureThreshold: 3
+          volumeMounts:
+            - name: jenkins-data
+              mountPath: /var/jenkins_home
+              #- mountPath: /var/run
+              #name: docker-sock
         - image: webhookrelay/webhookrelayd:latest
           name: webhookrelayd
           env:
@@ -61,11 +66,6 @@ spec:
                 secretKeyRef:
                   name: webhookrelay-credentials
                   key: bucket
-          volumeMounts:
-            - name: jenkins-data
-              mountPath: /var/jenkins_home 
-              #- mountPath: /var/run
-              #name: docker-sock
       volumes:
         - name: jenkins-data
           persistentVolumeClaim:
